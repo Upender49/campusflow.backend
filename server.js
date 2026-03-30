@@ -10,7 +10,9 @@ const helpRoutes = require('./routes/helpRoutes');
 const app = express();
 
 // Middleware
-app.use(cors({ origin: '*' }));
+app.use(cors({ 
+  origin: ['http://localhost:5173', 'https://admin-campusflow.onrender.com'] 
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
