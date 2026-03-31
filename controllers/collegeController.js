@@ -168,29 +168,4 @@ exports.createCollegeAdmin = async (req, res) => {
   }
 };
 
-// ─── POST /api/colleges/register (PUBLIC) ────────────────────────────────────
-exports.registerCollege = async (req, res) => {
-  try {
-    const data = req.body;
-    data.status = 'pending';
-    
-    // Construct initial log
-    data.logs = [{
-      action: 'CREATED',
-      message: 'College registration submitted via self-registration portal',
-      performedBy: data.contactPersons?.[0]?.email || 'Portal User',
-      timestamp: new Date()
-    }];
-
-    const college = await College.create(data);
-
-    res.status(201).json({
-      success: true,
-      message: 'College registered successfully',
-      data: college
-    });
-  } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
-  }
-};
 

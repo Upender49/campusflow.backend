@@ -6,13 +6,9 @@ const {
   getCollegeById,
   updateStatus,
   createCollegeAdmin,
-  registerCollege,
 } = require('../controllers/collegeController');
 
-// Public routes
-router.post('/register', registerCollege);
-
-// Apply auth middleware to all other routes
+// Protected routes only — auth required for all
 router.use(auth);
 
 router.get('/', getColleges);
